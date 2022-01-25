@@ -380,7 +380,7 @@ public class ListaContatos extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        limpaCampos();
+        limpaContato();
         comando = "INSERT";
     }//GEN-LAST:event_btnAddActionPerformed
 
@@ -611,6 +611,32 @@ public class ListaContatos extends javax.swing.JFrame {
     private static boolean temEndereco = false;
     private static Endereco objEndereco = new Endereco();
 
+    private void limpaCampos() {
+        edtNome.setText("");
+        edtSobrenome.setText("");
+        edtEndereco.setText("");
+        edtBairro.setText("");
+        edtCidade.setText("");
+        edtEstado.setText("");
+        edtPais.setText("");
+        edtCEP.setText("");
+    }
+
+    private void limpaVariaveis() {
+        comando = "";
+        contatosIndice.clear();
+        enderecosIndice.clear();
+        tipoEnderecosIndice.clear();
+        temEndereco = false;
+        objEndereco = new Endereco();
+    }
+
+    private void limpaContato() {
+
+        edtNome.setText("");
+        edtSobrenome.setText("");
+    }
+
     private void loadList() {
         lstContatos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = ContatoCtrl.pesquisa();
@@ -641,6 +667,7 @@ public class ListaContatos extends javax.swing.JFrame {
     }
 
     private void loadList2() {
+
         lstContatos.setModel(new javax.swing.AbstractListModel<String>() {
             String[] strings = pesquisa();
 
@@ -652,8 +679,10 @@ public class ListaContatos extends javax.swing.JFrame {
                 return strings[i];
             }
         });
-        lstContatos.setSelectedIndex(0);
-        loadContato();
+        if (lstContatos.getFirstVisibleIndex() != -1) {
+            lstContatos.setSelectedIndex(0);
+            loadContato();
+        }
     }
 
     private void loadListEndereco() {
@@ -773,17 +802,11 @@ public class ListaContatos extends javax.swing.JFrame {
         }
     }
 
-    private void limpaCampos() {
-
-        edtNome.setText("");
-        edtSobrenome.setText("");
-    }
-
     private void insereContato() {
         if (comando.equals("INSERT")) {
             if (!edtNome.getText().isEmpty() || !edtSobrenome.getText().isEmpty()) {
                 ContatoCtrl.insere(edtNome.getText(), edtSobrenome.getText());
-                limpaCampos();
+                limpaContato();
                 loadList2();
                 comando = "";
             }
@@ -798,7 +821,7 @@ public class ListaContatos extends javax.swing.JFrame {
                     contatosIndice.get(lstContatos.getSelectedIndex()),
                     edtNome.getText(),
                     edtSobrenome.getText());
-            limpaCampos();
+            limpaContato();
             loadList2();
             btnOK.setEnabled(false);
             btnCancel.setEnabled(false);
@@ -812,7 +835,7 @@ public class ListaContatos extends javax.swing.JFrame {
                     lstContatos.getSelectedValue(),
                     edtNome.getText(),
                     edtSobrenome.getText());
-            limpaCampos();
+            limpaContato();
             loadList2();
             btnOK.setEnabled(false);
             btnCancel.setEnabled(false);
@@ -823,7 +846,7 @@ public class ListaContatos extends javax.swing.JFrame {
     private void deletaContato() {
         if (!edtNome.getText().isEmpty() || !edtSobrenome.getText().isEmpty()) {
             ContatoCtrl.deleta(contatosIndice.get(lstContatos.getSelectedIndex()));
-            limpaCampos();
+            limpaContato();
             loadList2();
             btnOK.setEnabled(false);
             btnCancel.setEnabled(false);
