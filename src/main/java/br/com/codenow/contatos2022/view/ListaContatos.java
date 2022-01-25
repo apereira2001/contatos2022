@@ -22,6 +22,9 @@ public class ListaContatos extends javax.swing.JFrame {
      */
     public ListaContatos() {
         initComponents();
+        limpaCampos;
+        limpaVariaveis;
+
         lblMensagem.setText("");
         loadList2();
     }
@@ -79,9 +82,15 @@ public class ListaContatos extends javax.swing.JFrame {
 
         lstContatos.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         lstContatos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            String[] strings = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
+
+            public int getSize() {
+                return strings.length;
+            }
+
+            public String getElementAt(int i) {
+                return strings[i];
+            }
         });
         lstContatos.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -92,6 +101,7 @@ public class ListaContatos extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lstContatosMouseClicked(evt);
             }
+
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 lstContatosMouseReleased(evt);
             }
@@ -271,9 +281,15 @@ public class ListaContatos extends javax.swing.JFrame {
         jScrollPane2.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
 
         lstEnderecos.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
+            String[] strings = {"Item 1", "Item 2", "Item 3", "Item 4", "Item 5"};
+
+            public int getSize() {
+                return strings.length;
+            }
+
+            public String getElementAt(int i) {
+                return strings[i];
+            }
         });
         lstEnderecos.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseDragged(java.awt.event.MouseEvent evt) {
@@ -284,6 +300,7 @@ public class ListaContatos extends javax.swing.JFrame {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lstEnderecosMouseClicked(evt);
             }
+
             public void mouseReleased(java.awt.event.MouseEvent evt) {
                 lstEnderecosMouseReleased(evt);
             }
