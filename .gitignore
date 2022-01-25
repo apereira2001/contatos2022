@@ -1,6 +1,21 @@
 # Compiled class file
 *.class
 
+target/
+
+contatos2022.json
+.DS_Store
+ReadMeGit.txt
+contatos2022.json
+contatos2022.sqlite
+get_film.plpgsql
+popularTabelas.sql
+popularTabelas1.sql
+popularTabelas2.sql
+popularTabelas3.sql
+target/
+tela.java
+
 # Log file
 *.log
 
