@@ -1,4 +1,4 @@
-package br.com.codenow.contatos2022.model;
+package com.adrianocodenow.contatos2022.model;
 
 /**
  *

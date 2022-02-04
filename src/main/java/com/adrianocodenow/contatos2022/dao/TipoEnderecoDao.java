@@ -1,8 +1,8 @@
-package br.com.codenow.contatos2022.dao;
+package com.adrianocodenow.contatos2022.dao;
 
-import br.com.codenow.contatos2022.controller.Config;
-import br.com.codenow.contatos2022.factory.ConnectionFactory;
-import br.com.codenow.contatos2022.model.TipoEndereco;
+import com.adrianocodenow.contatos2022.controller.Config;
+import com.adrianocodenow.contatos2022.factory.ConnectionFactory;
+import com.adrianocodenow.contatos2022.model.TipoEndereco;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

@@ -2,14 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package br.com.codenow.contatos2022.controller;
+package com.adrianocodenow.contatos2022.controller;
 
-import br.com.codenow.contatos2022.dao.ContatosDao;
-import br.com.codenow.contatos2022.dao.EnderecoDao;
-import br.com.codenow.contatos2022.dao.TipoEnderecoDao;
-import br.com.codenow.contatos2022.model.Contato;
-import br.com.codenow.contatos2022.model.Endereco;
-import br.com.codenow.contatos2022.model.TipoEndereco;
+import com.adrianocodenow.contatos2022.dao.ContatosDao;
+import com.adrianocodenow.contatos2022.dao.EnderecoDao;
+import com.adrianocodenow.contatos2022.dao.TipoEnderecoDao;
+import com.adrianocodenow.contatos2022.model.Contato;
+import com.adrianocodenow.contatos2022.model.Endereco;
+import com.adrianocodenow.contatos2022.model.TipoEndereco;
 
 import java.util.ArrayList;
 import java.util.List;

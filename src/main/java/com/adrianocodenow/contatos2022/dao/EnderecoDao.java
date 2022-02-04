@@ -1,8 +1,8 @@
-package br.com.codenow.contatos2022.dao;
+package com.adrianocodenow.contatos2022.dao;
 
-import br.com.codenow.contatos2022.controller.Config;
-import br.com.codenow.contatos2022.factory.ConnectionFactory;
-import br.com.codenow.contatos2022.model.Endereco;
+import com.adrianocodenow.contatos2022.controller.Config;
+import com.adrianocodenow.contatos2022.factory.ConnectionFactory;
+import com.adrianocodenow.contatos2022.model.Endereco;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -299,6 +299,43 @@ public class EnderecoDao {
             Logger.getLogger(ContatosDao.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             try {
+                if (stmt != null) {
+                    stmt.close();
+                }
+                ConnectionFactory.fecha(db);
+            } catch (SQLException e) {
+                System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            }
+        }
+        return retorno;
+    }
+
+    public static boolean buscaIDTipoEndereco(int id) {
+        String sql
+                = "SELECT * FROM enderecos WHERE idTipoEndereco = ?";
+        boolean retorno = false;
+        Connection db = null;
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
+        try {
+            db = ConnectionFactory.abre(Config.BANCO_DE_DADOS);
+            if (db != null) {
+                stmt = db.prepareStatement(sql);
+                stmt.setInt(1, id);
+                resultado = stmt.executeQuery();
+                if (resultado.next()) {
+                    retorno = true;
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ContatosDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (resultado != null) {
+                    resultado.close();
+                }
                 if (stmt != null) {
                     stmt.close();
                 }

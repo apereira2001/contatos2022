@@ -2,11 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package br.com.codenow.contatos2022.view;
+package com.adrianocodenow.contatos2022.view;
 
-import br.com.codenow.contatos2022.controller.ContatoCtrl;
-import br.com.codenow.contatos2022.dao.ContatosDao;
-import br.com.codenow.contatos2022.model.Contato;
+import com.adrianocodenow.contatos2022.controller.ContatoCtrl;
+import com.adrianocodenow.contatos2022.dao.ContatosDao;
+import com.adrianocodenow.contatos2022.model.Contato;
 import java.awt.Font;
 import javax.swing.JOptionPane;
 

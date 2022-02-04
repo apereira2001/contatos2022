@@ -1,8 +1,8 @@
-package br.com.codenow.contatos2022.dao;
+package com.adrianocodenow.contatos2022.dao;
 
-import br.com.codenow.contatos2022.controller.Config;
-import br.com.codenow.contatos2022.factory.ConnectionFactory;
-import br.com.codenow.contatos2022.model.TipoTelefone;
+import com.adrianocodenow.contatos2022.controller.Config;
+import com.adrianocodenow.contatos2022.factory.ConnectionFactory;
+import com.adrianocodenow.contatos2022.model.TipoTelefone;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -237,6 +237,46 @@ public class TipoTelefoneDao {
             }
         }
         return retorno;
+    }
+
+    public static List<TipoTelefone> lista() {
+        String sql
+                = "SELECT * FROM tipoTelefones";
+        List<TipoTelefone> tipoTelefones = new ArrayList<TipoTelefone>();
+
+        Connection db = null;
+        PreparedStatement stmt = null;
+        ResultSet resultado = null;
+        try {
+            db = ConnectionFactory.abre(Config.BANCO_DE_DADOS);
+            if (db != null) {
+                stmt = db.prepareStatement(sql);
+                resultado = stmt.executeQuery();
+                while (resultado.next()) {
+                    TipoTelefone rstTipoTelefone = new TipoTelefone();
+                    rstTipoTelefone.setIdTipoTelefone(resultado.getInt("idTipoTelefone"));
+                    rstTipoTelefone.setTipoTelefone(resultado.getString("tipoTelefone"));
+                    tipoTelefones.add(rstTipoTelefone);
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getClass().getName() + ": " + e.getMessage());
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(TipoTelefoneDao.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (resultado != null) {
+                    resultado.close();
+                }
+                if (stmt != null) {
+                    stmt.close();
+                }
+                ConnectionFactory.fecha(db);
+            } catch (SQLException e) {
+                System.err.println(e.getClass().getName() + ": " + e.getMessage());
+            }
+        }
+        return tipoTelefones;
     }
 
     public static void main(String[] args) {
